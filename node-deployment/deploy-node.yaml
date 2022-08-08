@@ -1,0 +1,26 @@
+---
+- name: Install node and npm
+  hosts: apt_hosts
+  become: yes
+  tasks:
+    - name: Update apt repo & cache
+      apt: 
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 360000
+    - name: Install nodejs and npm
+      apt:
+        pkg:
+          - nodejs
+          - npm
+        state: present
+
+- name: Deploy nodejs app
+  hosts: apt_hosts
+  become: yes
+  become_user: ubuntu
+  tasks:
+    - name: Unarchive nodejs files in remote machine
+      unarchive:
+        src: /mnt/d/Documents/apps/simple-nodejs/nodejs-app-1.0.0.tgz
+        dest: /opt 

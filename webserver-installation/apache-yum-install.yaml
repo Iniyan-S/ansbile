@@ -1,0 +1,13 @@
+---
+- name: Configure apache httpd web server
+  hosts: yum_hosts
+  become: yes
+  tasks: 
+  - name: Install apache httpd web server
+    yum: 
+      name: httpd=2.2*
+      state: present
+  - name: Start apache httpd web server
+    service:
+      name: httpd
+      state: started 
