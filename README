@@ -1,1 +1,1 @@
-Usage: ansible-playbook -i hosts <directory>/<playbook>.yaml
+Usage: ansible-playbook -i hosts <directory>/<playbook>.yaml   
